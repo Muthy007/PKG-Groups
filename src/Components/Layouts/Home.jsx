@@ -447,7 +447,7 @@ export default function Home() {
           <motion.div animate={{ rotate: -360, scale: [1, 1.1, 1] }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} style={{ position: "absolute", bottom: "-10%", left: "-10%", width: "35vw", height: "35vw", background: "radial-gradient(circle, rgba(10,15,60,0.03) 0%, rgba(255,255,255,0) 70%)", borderRadius: "50%" }} />
 
           <Container maxWidth={false} sx={{ px: "10vw", position: "relative", zIndex: 1 }}>
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "6vw", alignItems: "center" }}>
+            <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: { xs: "12vw", md: "6vw" }, alignItems: "center" }}>
 
               <Box sx={{ flex: 1, minWidth: 0, width: "100%" }}>
                 <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
@@ -488,8 +488,8 @@ export default function Home() {
               </Box>
 
               {/* Right Collage */}
-              <Box sx={{ flex: 1, minWidth: 0, display: "flex", justifyContent: "flex-end", width: "100%" }}>
-                <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeInRight} style={{ width: "100%", maxWidth: "45vw", height: "40vw", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", perspective: 1200 }}>
+              <Box sx={{ flex: 1, minWidth: 0, display: "flex", justifyContent: { xs: "center", md: "flex-end" }, width: "100%" }}>
+                <Box component={motion.div} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeInRight} sx={{ width: "100%", maxWidth: { xs: "90vw", md: "45vw" }, height: { xs: "80vw", md: "40vw" }, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", perspective: 1200 }}>
 
                   {/* Floating Gold Halo */}
                   <motion.div animate={{ rotate: 360, opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} style={{ position: "absolute", top: "0%", right: "0%", width: "70%", height: "70%", borderRadius: "50%", background: "radial-gradient(circle, rgba(204,153,0,0.15) 0%, rgba(204,153,0,0) 70%)", zIndex: 0 }} />
@@ -503,7 +503,7 @@ export default function Home() {
                   <motion.div animate={{ y: [0, 15, 0], rotateY: [5, -5, 5], rotateX: [-2, 2, -2] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }} style={{ position: "absolute", right: '0%', bottom: '5%', width: "55%", height: "60%", zIndex: 2, borderRadius: "20px", overflow: "hidden", boxShadow: "0 30px 60px rgba(10,15,60,0.35)", border: "8px solid #fff", backgroundImage: `url(${wedding2Img})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.9)", transformOrigin: "center" }} />
 
                   {/* Spinning Badge */}
-                  <Box sx={{ position: "absolute", bottom: "10%", left: "-5%", zIndex: 3, width: "12vw", height: "12vw", minWidth: "120px", minHeight: "120px", display: "flex", alignItems: "center", justifyContent: "center", transform: "translateZ(80px)" }}>
+                  <Box sx={{ position: "absolute", bottom: "10%", left: "-5%", zIndex: 3, width: { xs: "25vw", md: "12vw" }, height: { xs: "25vw", md: "12vw" }, minWidth: { xs: "100px", md: "120px" }, minHeight: { xs: "100px", md: "120px" }, display: "flex", alignItems: "center", justifyContent: "center", transform: "translateZ(80px)" }}>
                     {/* Rotating Outer Ring */}
                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} style={{ position: "absolute", inset: 0, borderRadius: "50%", border: "2px dashed #cc9900", opacity: 0.6 }} />
 
@@ -515,7 +515,7 @@ export default function Home() {
                     </Box>
                   </Box>
 
-                </motion.div>
+                </Box>
               </Box>
             </Box>
           </Container>
@@ -550,18 +550,18 @@ export default function Home() {
               <Box sx={{ width: "60px", height: "3px", bgcolor: "#cc9900", mx: "auto", mt: 3 }} />
             </motion.div>
 
-            <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5vw", width: "100%" }}>
+            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" }, gap: { xs: "6vw", md: "1.5vw" }, width: "100%", maxWidth: "100%" }}>
               {specialities.map((cuisine, i) => (
-                <Box key={i}>
+                <Box key={i} sx={{ minWidth: 0, width: "100%" }}>
                   <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={flipIn3D} style={{ width: "100%", height: "100%" }}>
-                    <TiltCard style={{ width: "100%", aspectRatio: "21/9", minHeight: "200px", borderRadius: "12px" }}>
-                      <Box sx={{ width: "100%", height: "100%", overflow: "hidden", borderRadius: "12px", position: "relative", border: "1px solid rgba(255,215,0,0.15)", boxShadow: "0 15px 30px rgba(0,0,0,0.08)" }}>
+                    <TiltCard style={{ width: "100%", minHeight: "200px", borderRadius: "12px" }}>
+                      <Box sx={{ width: "100%", height: "100%", aspectRatio: { xs: "4/3", sm: "16/9", md: "21/9" }, overflow: "hidden", borderRadius: "12px", position: "relative", border: "1px solid rgba(255,215,0,0.15)", boxShadow: "0 15px 30px rgba(0,0,0,0.08)" }}>
                         <motion.div whileHover={{ scale: 1.08 }} transition={{ duration: 1, ease: "easeOut" }} style={{ width: "100%", height: "100%" }}>
                           <Box component="img" src={cuisine.img} alt={cuisine.name} sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(0.85)", transition: "filter 0.5s", "&:hover": { filter: "brightness(1)" } }} />
                         </motion.div>
                         {/* Overlay */}
-                        <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to top, rgba(10,15,60,0.9) 0%, rgba(0,0,0,0) 70%)', display: 'flex', alignItems: 'flex-end', justifyContent: "center", p: { xs: 3, md: "2vw" }, pointerEvents: 'none' }}>
-                          <Typography variant="h5" sx={{ fontFamily: "'Playfair Display', serif", color: '#ffcc00', fontWeight: "bold", textAlign: "center", textShadow: "0 4px 8px rgba(0,0,0,0.6)", fontSize: "clamp(1.5rem, 2vw, 3rem)", letterSpacing: "1px", transform: "translateZ(30px)" }}>
+                        <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to top, rgba(10,15,60,0.9) 0%, rgba(0,0,0,0) 70%)', display: 'flex', alignItems: 'flex-end', justifyContent: "center", p: { xs: 2, md: "2vw" }, pointerEvents: 'none' }}>
+                          <Typography variant="h5" sx={{ fontFamily: "'Playfair Display', serif", color: '#ffcc00', fontWeight: "bold", textAlign: "center", textShadow: "0 4px 8px rgba(0,0,0,0.6)", fontSize: { xs: "1.2rem", sm: "1.5rem", md: "clamp(1.5rem, 2vw, 3rem)" }, letterSpacing: "1px", transform: "translateZ(30px)", wordWrap: "break-word", whiteSpace: "normal", width: "100%" }}>
                             {cuisine.name}
                           </Typography>
                         </Box>

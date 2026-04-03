@@ -206,7 +206,8 @@ const CornerClusters = ({ textures }) => {
             const numFlowers = 6;
             for (let i = 0; i < numFlowers; i++) {
                 // Ensure they are fully visible by pushing them safely inwards from the edge (Width/2)
-                const safeInsetMargin = 1.5 + Math.random() * 1.5; 
+                const isMobile = viewport.width < 10;
+                const safeInsetMargin = (isMobile ? 0.2 : 1.5) + Math.random() * (isMobile ? 0.5 : 1.5); 
                 const xPos = (viewport.width / 2 - safeInsetMargin) * sideSign;
                 
                 // Spread out significantly along the vertical screen height
@@ -232,7 +233,8 @@ const CornerClusters = ({ textures }) => {
             // Populate the perimeter elegantly with trailing leaves
             const numLeaves = 8;
             for (let i = 0; i < numLeaves; i++) {
-                const safeInsetMargin = 1.0 + Math.random() * 2.5; 
+                const isMobile = viewport.width < 10;
+                const safeInsetMargin = (isMobile ? 0.1 : 1.0) + Math.random() * (isMobile ? 0.4 : 2.5); 
                 const xPos = (viewport.width / 2 - safeInsetMargin) * sideSign;
                 
                 const ySpread = viewport.height * 0.9;

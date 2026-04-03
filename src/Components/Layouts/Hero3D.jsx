@@ -15,7 +15,7 @@ const FloatingRing = ({ position, scale, rotationSpeed }) => {
 
   return (
     <Float speed={1.5} rotationIntensity={1} floatIntensity={1} floatingRange={[-0.3, 0.3]}>
-      <Torus ref={meshRef} args={[1, 0.04, 32, 100]} position={position} scale={scale}>
+      <Torus ref={meshRef} args={[1, 0.04, 16, 48]} position={position} scale={scale}>
         <meshStandardMaterial color="#ffcc00" metalness={0.9} roughness={0.15} />
       </Torus>
     </Float>
@@ -25,7 +25,7 @@ const FloatingRing = ({ position, scale, rotationSpeed }) => {
 export default function Hero3D() {
   return (
     <Box sx={{ position: 'absolute', inset: 0, zIndex: 2, overflow: 'hidden', pointerEvents: 'none' }}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 10], fov: 50 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
         <directionalLight position={[-10, -10, -10]} intensity={0.5} color="#cc9900" />

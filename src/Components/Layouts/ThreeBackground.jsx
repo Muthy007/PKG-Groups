@@ -9,7 +9,7 @@ const ParticleSystem = () => {
   // Custom scroll tracking to only move on scroll
   const scrollData = useRef({ current: 0, target: 0 });
 
-  const particlesCount = 20000;
+  const particlesCount = 5000;
   
   const [positions, colors] = useMemo(() => {
     const positions = new Float32Array(particlesCount * 3);
@@ -103,7 +103,7 @@ const ParticleSystem = () => {
 export default function ThreeBackground() {
   return (
     <Box sx={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-      <Canvas camera={{ position: [0, 0, 15], fov: 60 }} gl={{ antialias: false, alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 15], fov: 60 }} gl={{ antialias: false, alpha: true }} dpr={[1, 1.5]}>
         <ParticleSystem />
       </Canvas>
     </Box>

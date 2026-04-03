@@ -251,8 +251,8 @@ const CornerClusters = ({ textures }) => {
             }
         };
 
-        createSideFlow(false); // Cascade heavily down the Left Flank
-        createSideFlow(true);  // Cascade heavily down the Right Flank
+        createSideFlow(false); 
+        createSideFlow(true);  
         
         return items;
     }, [viewport.width, viewport.height, textures]);
@@ -310,7 +310,7 @@ const FallingPetalsRain = ({ textures }) => {
 
     const elements = useMemo(() => {
         const items = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 12; i++) {
             const xOffset = (Math.random() - 0.5) * viewport.width;
             const yOffset = bounds.maxY + Math.random() * viewport.height; 
             const zOffset = -2 + Math.random() * 5; 
@@ -352,7 +352,7 @@ export default function CherryBlossoms3D() {
             {/* 
               Utilize antialiasing and alpha projection perfectly aligning over your container
             */}
-            <Canvas camera={{ position: [0, 0, 16], fov: 45 }} gl={{ alpha: true, antialias: true }}>
+            <Canvas camera={{ position: [0, 0, 16], fov: 45 }} gl={{ alpha: true, antialias: true }} dpr={[1, 1.5]}>
                 <CherryBlossomsScene />
             </Canvas>
         </Box>

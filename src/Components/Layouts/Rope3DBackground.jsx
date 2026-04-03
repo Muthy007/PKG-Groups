@@ -37,7 +37,7 @@ const Flower = ({ position, rotation, scale = 1, color1 = "#ffffff", color2 = "#
     <group position={position} scale={scale} ref={groupRef}>
       {/* Center of the flower */}
       <mesh position={[0, 0, 0.15]}>
-        <sphereGeometry args={[0.2, 32, 16]} />
+        <sphereGeometry args={[0.2, 12, 8]} />
         <meshStandardMaterial color={centerColor} roughness={0.7} metalness={0.2} emissive={centerColor} emissiveIntensity={0.2} />
       </mesh>
       
@@ -47,7 +47,7 @@ const Flower = ({ position, rotation, scale = 1, color1 = "#ffffff", color2 = "#
         return (
           <group key={`outer-${i}`} rotation={[0, 0, angle]}>
             <mesh position={[0, 0.5, 0]} scale={[0.6, 1.4, 0.1]} rotation={[0.3, 0, 0]}>
-              <sphereGeometry args={[0.4, 32, 16]} />
+              <sphereGeometry args={[0.4, 12, 8]} />
               <meshStandardMaterial color={color1} roughness={0.3} metalness={0.2} />
             </mesh>
           </group>
@@ -60,7 +60,7 @@ const Flower = ({ position, rotation, scale = 1, color1 = "#ffffff", color2 = "#
         return (
           <group key={`inner-${i}`} rotation={[0, 0, angle]}>
             <mesh position={[0, 0.35, 0.05]} scale={[0.5, 1.0, 0.1]} rotation={[0.4, 0, 0]}>
-              <sphereGeometry args={[0.4, 32, 16]} />
+              <sphereGeometry args={[0.4, 12, 8]} />
               <meshStandardMaterial color={color2} roughness={0.2} metalness={0.1} />
             </mesh>
           </group>
@@ -97,11 +97,11 @@ const Leaf = ({ position, rotation, scale = 1, spinSpeed, initialAngle, initialU
   return (
     <group position={position} scale={scale} ref={groupRef}>
       <mesh position={[0, 0.5, 0]} scale={[0.5, 1.5, 0.05]} rotation={[0.2, 0, 0]}>
-        <sphereGeometry args={[0.4, 16, 16]} />
+        <sphereGeometry args={[0.4, 12, 8]} />
         <meshStandardMaterial color="#388e3c" roughness={0.4} metalness={0.1} />
       </mesh>
       <mesh position={[0, 0.3, 0.02]} scale={[0.4, 1.2, 0.05]} rotation={[0.4, 0.2, 0]}>
-        <sphereGeometry args={[0.4, 16, 16]} />
+        <sphereGeometry args={[0.4, 12, 8]} />
         <meshStandardMaterial color="#2e7d32" roughness={0.5} metalness={0.1} />
       </mesh>
     </group>
@@ -167,7 +167,7 @@ const FlowingElement = ({ curve, isFlower, palette, initialU, speedU, initialAng
 };
 
 // Manager component that renders all flowing flowers and leaves
-const FlowingDecorations = ({ curve, count = 250 }) => {
+const FlowingDecorations = ({ curve, count = 50 }) => {
   const items = useMemo(() => {
     const list = [];
     const colorPalettes = [
@@ -301,12 +301,12 @@ const ScrollScene = () => {
     <group ref={sceneRef}>
       {/* 1. THE MAIN CONTINUOUS VINE */}
       <mesh>
-        <tubeGeometry args={[curve, 400, 0.5, 32, false]} />
+        <tubeGeometry args={[curve, 200, 0.5, 16, false]} />
         <meshStandardMaterial color="#cca700" metalness={0.8} roughness={0.2} />
       </mesh>
 
 {/* Smoothly flowing flowers and leaves around the vine */}
-      <FlowingDecorations curve={curve} count={250} />
+      <FlowingDecorations curve={curve} count={50} />
 
       {/* Hero Section Static Flowers (Page Load) */}
       
@@ -366,7 +366,7 @@ const ScrollScene = () => {
 export default function Rope3DBackground() {
   return (
     <Box sx={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none', overflow: 'hidden' }}>
-      <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.7} />
         <directionalLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
         <directionalLight position={[-10, -10, -5]} intensity={1} color="#cc9900" />
